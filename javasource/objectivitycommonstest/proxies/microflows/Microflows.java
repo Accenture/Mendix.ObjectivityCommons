@@ -21,35 +21,83 @@ public class Microflows
 		params.put("ContextVM", _contextVM == null ? null : _contextVM.getMendixObject());
 		Core.microflowCall("ObjectivityCommonsTest.ACT_CreateData").withParams(params).execute(context);
 	}
-	public static void aCT_Test_CreateObjectList(IContext context, objectivitycommonstest.proxies.TestContextVM _contextVM)
-	{
-		Map<java.lang.String, Object> params = new HashMap<>();
-		params.put("ContextVM", _contextVM == null ? null : _contextVM.getMendixObject());
-		Core.microflowCall("ObjectivityCommonsTest.ACT_Test_CreateObjectList").withParams(params).execute(context);
-	}
-	public static void aCT_Test_GetObjectsFromList_FromChildrenToParents(IContext context, objectivitycommonstest.proxies.TestContextVM _contextVM)
-	{
-		Map<java.lang.String, Object> params = new HashMap<>();
-		params.put("ContextVM", _contextVM == null ? null : _contextVM.getMendixObject());
-		Core.microflowCall("ObjectivityCommonsTest.ACT_Test_GetObjectsFromList_FromChildrenToParents").withParams(params).execute(context);
-	}
-	public static void aCT_Test_GetObjectsFromList_FromParentsToChildren(IContext context, objectivitycommonstest.proxies.TestContextVM _contextVM)
-	{
-		Map<java.lang.String, Object> params = new HashMap<>();
-		params.put("ContextVM", _contextVM == null ? null : _contextVM.getMendixObject());
-		Core.microflowCall("ObjectivityCommonsTest.ACT_Test_GetObjectsFromList_FromParentsToChildren").withParams(params).execute(context);
-	}
 	public static void aCT_Test_GetTypeAsString(IContext context, objectivitycommonstest.proxies.TestContextVM _contextVM)
 	{
 		Map<java.lang.String, Object> params = new HashMap<>();
 		params.put("ContextVM", _contextVM == null ? null : _contextVM.getMendixObject());
 		Core.microflowCall("ObjectivityCommonsTest.ACT_Test_GetTypeAsString").withParams(params).execute(context);
 	}
+	public static void aCT_Test_ListCreate(IContext context, objectivitycommonstest.proxies.TestContextVM _contextVM)
+	{
+		Map<java.lang.String, Object> params = new HashMap<>();
+		params.put("ContextVM", _contextVM == null ? null : _contextVM.getMendixObject());
+		Core.microflowCall("ObjectivityCommonsTest.ACT_Test_ListCreate").withParams(params).execute(context);
+	}
+	public static void aCT_Test_ListCreate_WithContext(IContext context, objectivitycommonstest.proxies.TestContextVM _contextVM)
+	{
+		Map<java.lang.String, Object> params = new HashMap<>();
+		params.put("ContextVM", _contextVM == null ? null : _contextVM.getMendixObject());
+		Core.microflowCall("ObjectivityCommonsTest.ACT_Test_ListCreate_WithContext").withParams(params).execute(context);
+	}
+	public static void aCT_Test_ListCreateSimple(IContext context, objectivitycommonstest.proxies.TestContextVM _contextVM)
+	{
+		Map<java.lang.String, Object> params = new HashMap<>();
+		params.put("ContextVM", _contextVM == null ? null : _contextVM.getMendixObject());
+		Core.microflowCall("ObjectivityCommonsTest.ACT_Test_ListCreateSimple").withParams(params).execute(context);
+	}
+	public static void aCT_Test_ListGetByIndex(IContext context, objectivitycommonstest.proxies.TestContextVM _contextVM)
+	{
+		Map<java.lang.String, Object> params = new HashMap<>();
+		params.put("ContextVM", _contextVM == null ? null : _contextVM.getMendixObject());
+		Core.microflowCall("ObjectivityCommonsTest.ACT_Test_ListGetByIndex").withParams(params).execute(context);
+	}
 	public static void aCT_Test_RandomNumber(IContext context, objectivitycommonstest.proxies.TestContextVM _contextVM)
 	{
 		Map<java.lang.String, Object> params = new HashMap<>();
 		params.put("ContextVM", _contextVM == null ? null : _contextVM.getMendixObject());
 		Core.microflowCall("ObjectivityCommonsTest.ACT_Test_RandomNumber").withParams(params).execute(context);
+	}
+	public static void aCT_Test_RetrieveFromList_FromChildren_NonXPath(IContext context, objectivitycommonstest.proxies.TestContextVM _contextVM)
+	{
+		Map<java.lang.String, Object> params = new HashMap<>();
+		params.put("ContextVM", _contextVM == null ? null : _contextVM.getMendixObject());
+		Core.microflowCall("ObjectivityCommonsTest.ACT_Test_RetrieveFromList_FromChildren_NonXPath").withParams(params).execute(context);
+	}
+	public static void aCT_Test_RetrieveFromList_FromChildren_XPath(IContext context, objectivitycommonstest.proxies.TestContextVM _contextVM)
+	{
+		Map<java.lang.String, Object> params = new HashMap<>();
+		params.put("ContextVM", _contextVM == null ? null : _contextVM.getMendixObject());
+		Core.microflowCall("ObjectivityCommonsTest.ACT_Test_RetrieveFromList_FromChildren_XPath").withParams(params).execute(context);
+	}
+	public static void aCT_Test_RetrieveFromList_FromParents_XPath(IContext context, objectivitycommonstest.proxies.TestContextVM _contextVM)
+	{
+		Map<java.lang.String, Object> params = new HashMap<>();
+		params.put("ContextVM", _contextVM == null ? null : _contextVM.getMendixObject());
+		Core.microflowCall("ObjectivityCommonsTest.ACT_Test_RetrieveFromList_FromParents_XPath").withParams(params).execute(context);
+	}
+	public static void aCT_Test_StringReplaceRegex(IContext context, objectivitycommonstest.proxies.TestContextVM _contextVM)
+	{
+		Map<java.lang.String, Object> params = new HashMap<>();
+		params.put("ContextVM", _contextVM == null ? null : _contextVM.getMendixObject());
+		Core.microflowCall("ObjectivityCommonsTest.ACT_Test_StringReplaceRegex").withParams(params).execute(context);
+	}
+	public static void aCT_Test_StringSplitAndJoin(IContext context, objectivitycommonstest.proxies.TestContextVM _contextVM)
+	{
+		Map<java.lang.String, Object> params = new HashMap<>();
+		params.put("ContextVM", _contextVM == null ? null : _contextVM.getMendixObject());
+		Core.microflowCall("ObjectivityCommonsTest.ACT_Test_StringSplitAndJoin").withParams(params).execute(context);
+	}
+	public static void aCT_Test_StringSplitAndJoinByMF(IContext context, objectivitycommonstest.proxies.TestContextVM _contextVM)
+	{
+		Map<java.lang.String, Object> params = new HashMap<>();
+		params.put("ContextVM", _contextVM == null ? null : _contextVM.getMendixObject());
+		Core.microflowCall("ObjectivityCommonsTest.ACT_Test_StringSplitAndJoinByMF").withParams(params).execute(context);
+	}
+	public static void aCT_Test_StringSplitAndJoinWithDoubleSepar(IContext context, objectivitycommonstest.proxies.TestContextVM _contextVM)
+	{
+		Map<java.lang.String, Object> params = new HashMap<>();
+		params.put("ContextVM", _contextVM == null ? null : _contextVM.getMendixObject());
+		Core.microflowCall("ObjectivityCommonsTest.ACT_Test_StringSplitAndJoinWithDoubleSepar").withParams(params).execute(context);
 	}
 	public static void aCT_TestRetrieve_Page_Next(IContext context, objectivitycommonstest.proxies.RetrieveContextVM _contextVM)
 	{
@@ -129,39 +177,50 @@ public class Microflows
 		params.put("ContextVM", _contextVM == null ? null : _contextVM.getMendixObject());
 		Core.microflowCall("ObjectivityCommonsTest.SUB_CreateData_Parent").withParams(params).execute(context);
 	}
-	public static java.lang.String sUB_GetNames_BaseList(IContext context, java.util.List<objectivitycommonstest.proxies.Base> _entities)
+	public static void sUB_Test_ListCreate(IContext context, objectivitycommonstest.proxies.Test _test, objectivitycommons.proxies.ValueVM _index)
 	{
 		Map<java.lang.String, Object> params = new HashMap<>();
-		java.util.ArrayList<IMendixObject> listparam_entities = null;
-		if (_entities != null)
-		{
-			listparam_entities = new java.util.ArrayList<>();
-			for (objectivitycommonstest.proxies.Base obj : _entities)
-				listparam_entities.add(obj.getMendixObject());
-		}
-		params.put("Entities", listparam_entities);
-
-		return (java.lang.String) Core.microflowCall("ObjectivityCommonsTest.SUB_GetNames_BaseList").withParams(params).execute(context);
+		params.put("Test", _test == null ? null : _test.getMendixObject());
+		params.put("Index", _index == null ? null : _index.getMendixObject());
+		Core.microflowCall("ObjectivityCommonsTest.SUB_Test_ListCreate").withParams(params).execute(context);
 	}
-	public static java.lang.String sUB_GetNames_TestList(IContext context, java.util.List<objectivitycommonstest.proxies.Test> _entities)
-	{
-		Map<java.lang.String, Object> params = new HashMap<>();
-		java.util.ArrayList<IMendixObject> listparam_entities = null;
-		if (_entities != null)
-		{
-			listparam_entities = new java.util.ArrayList<>();
-			for (objectivitycommonstest.proxies.Test obj : _entities)
-				listparam_entities.add(obj.getMendixObject());
-		}
-		params.put("Entities", listparam_entities);
-
-		return (java.lang.String) Core.microflowCall("ObjectivityCommonsTest.SUB_GetNames_TestList").withParams(params).execute(context);
-	}
-	public static void sUB_Test_CreateObjectList(IContext context, objectivitycommonstest.proxies.Test _test, objectivitycommonstest.proxies.TestContextVM _contextVM)
+	public static void sUB_Test_ListCreate_WithContext(IContext context, objectivitycommonstest.proxies.Test _test, objectivitycommonstest.proxies.TestContextVM _contextVM, objectivitycommons.proxies.ValueVM _index)
 	{
 		Map<java.lang.String, Object> params = new HashMap<>();
 		params.put("Test", _test == null ? null : _test.getMendixObject());
 		params.put("ContextVM", _contextVM == null ? null : _contextVM.getMendixObject());
-		Core.microflowCall("ObjectivityCommonsTest.SUB_Test_CreateObjectList").withParams(params).execute(context);
+		params.put("Index", _index == null ? null : _index.getMendixObject());
+		Core.microflowCall("ObjectivityCommonsTest.SUB_Test_ListCreate_WithContext").withParams(params).execute(context);
+	}
+	public static void sUB_Test_RetrieveFromList_ShowInfo(IContext context, java.util.List<objectivitycommonstest.proxies.Parent> _parentList, java.util.List<objectivitycommonstest.proxies.Child> _childrenList, java.lang.String _header, boolean _parentsFirst)
+	{
+		Map<java.lang.String, Object> params = new HashMap<>();
+		java.util.ArrayList<IMendixObject> listparam_parentList = null;
+		if (_parentList != null)
+		{
+			listparam_parentList = new java.util.ArrayList<>();
+			for (objectivitycommonstest.proxies.Parent obj : _parentList)
+				listparam_parentList.add(obj.getMendixObject());
+		}
+		params.put("ParentList", listparam_parentList);
+
+		java.util.ArrayList<IMendixObject> listparam_childrenList = null;
+		if (_childrenList != null)
+		{
+			listparam_childrenList = new java.util.ArrayList<>();
+			for (objectivitycommonstest.proxies.Child obj : _childrenList)
+				listparam_childrenList.add(obj.getMendixObject());
+		}
+		params.put("ChildrenList", listparam_childrenList);
+
+		params.put("Header", _header);
+		params.put("ParentsFirst", _parentsFirst);
+		Core.microflowCall("ObjectivityCommonsTest.SUB_Test_RetrieveFromList_ShowInfo").withParams(params).execute(context);
+	}
+	public static java.lang.String sUB_Test_StringSplitAndJoinByMF(IContext context, objectivitycommons.proxies.ValueVM _valueVM)
+	{
+		Map<java.lang.String, Object> params = new HashMap<>();
+		params.put("ValueVM", _valueVM == null ? null : _valueVM.getMendixObject());
+		return (java.lang.String) Core.microflowCall("ObjectivityCommonsTest.SUB_Test_StringSplitAndJoinByMF").withParams(params).execute(context);
 	}
 }

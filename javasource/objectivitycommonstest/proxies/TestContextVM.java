@@ -21,6 +21,8 @@ public class TestContextVM
 	public enum MemberNames
 	{
 		Number("Number"),
+		Text("Text"),
+		Separator("Separator"),
 		TestContextVM_User("ObjectivityCommonsTest.TestContextVM_User");
 
 		private java.lang.String metaName;
@@ -142,6 +144,78 @@ public class TestContextVM
 	public final void setNumber(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Integer number)
 	{
 		getMendixObject().setValue(context, MemberNames.Number.toString(), number);
+	}
+
+	/**
+	 * @return value of Text
+	 */
+	public final java.lang.String getText()
+	{
+		return getText(getContext());
+	}
+
+	/**
+	 * @param context
+	 * @return value of Text
+	 */
+	public final java.lang.String getText(com.mendix.systemwideinterfaces.core.IContext context)
+	{
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.Text.toString());
+	}
+
+	/**
+	 * Set value of Text
+	 * @param text
+	 */
+	public final void setText(java.lang.String text)
+	{
+		setText(getContext(), text);
+	}
+
+	/**
+	 * Set value of Text
+	 * @param context
+	 * @param text
+	 */
+	public final void setText(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String text)
+	{
+		getMendixObject().setValue(context, MemberNames.Text.toString(), text);
+	}
+
+	/**
+	 * @return value of Separator
+	 */
+	public final java.lang.String getSeparator()
+	{
+		return getSeparator(getContext());
+	}
+
+	/**
+	 * @param context
+	 * @return value of Separator
+	 */
+	public final java.lang.String getSeparator(com.mendix.systemwideinterfaces.core.IContext context)
+	{
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.Separator.toString());
+	}
+
+	/**
+	 * Set value of Separator
+	 * @param separator
+	 */
+	public final void setSeparator(java.lang.String separator)
+	{
+		setSeparator(getContext(), separator);
+	}
+
+	/**
+	 * Set value of Separator
+	 * @param context
+	 * @param separator
+	 */
+	public final void setSeparator(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String separator)
+	{
+		getMendixObject().setValue(context, MemberNames.Separator.toString(), separator);
 	}
 
 	/**
