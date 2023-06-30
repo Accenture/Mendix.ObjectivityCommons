@@ -16,6 +16,8 @@ import { Big } from "big.js";
  * JamCommons: StringSplit
  * Java: String.split
  * JavaScript: String.split
+ * 
+ * The splitting result is returned as list of ValueVM with String = value and Integer = index.
  * @param {string} string - Input string to split
  * @param {string} separator - Regex
  * @returns {Promise.<MxObject[]>}
@@ -25,15 +27,16 @@ export async function StringSplit_JS(string, separator) {
 	let str = string || '';
 	let sep = separator || '';
 	let parts = str.split(new RegExp(sep));
-	let entities = parts.map(part => mxCreate(part));
+	let entities = parts.map((part, index) => mxCreate(part, index));
 	return Promise.all(entities);
 
-	function mxCreate(val) {
+	function mxCreate(val, idx) {
         return new Promise(function (resolve, reject) {
             mx.data.create({
                 entity: 'ObjectivityCommons.ValueVM', // TODO: avoid hard-coding the name???
                 callback: function(mxObj) {
 					mxObj.set('String', val);
+					mxObj.set('Integer', idx);
 					resolve(mxObj);
                 },
 				error: function(error) { reject(error.message); }

@@ -23,6 +23,8 @@ import com.mendix.systemwideinterfaces.core.IMendixObject;
  * JamCommons: StringSplit
  * Java: String.split
  * JavaScript: String.split
+ * 
+ * The splitting result is returned as list of ValueVM with String = value and Integer = index.
  */
 public class StringSplit extends CustomJavaAction<java.util.List<IMendixObject>>
 {
@@ -44,9 +46,11 @@ public class StringSplit extends CustomJavaAction<java.util.List<IMendixObject>>
 		String sep = Optional.ofNullable(this.Separator).orElse("");
 		IContext ctx = this.getContext();
 		List<IMendixObject> result = new ArrayList<IMendixObject>();
+		int idx = 0;
 		for (String part : str.split(sep)) {
 			ValueVM vm = new ValueVM(ctx);
 			vm.setString(part);
+			vm.setInteger(idx++);
 			result.add(vm.getMendixObject());
 		}
 		return result;

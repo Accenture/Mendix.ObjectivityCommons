@@ -15,17 +15,38 @@ import com.mendix.systemwideinterfaces.core.IMendixObject;
 public class Microflows
 {
 	// These are the microflows for the ObjectivityCommons module
+	public static administration.proxies.Account dS_CurrentAccount(IContext context)
+	{
+		Map<java.lang.String, Object> params = new HashMap<>();
+		IMendixObject result = (IMendixObject)Core.microflowCall("ObjectivityCommons.DS_CurrentAccount").withParams(params).execute(context);
+		return result == null ? null : administration.proxies.Account.initialize(context, result);
+	}
 	public static objectivitycommons.proxies.ContextVM dS_CurrentContextVM(IContext context)
 	{
 		Map<java.lang.String, Object> params = new HashMap<>();
 		IMendixObject result = (IMendixObject)Core.microflowCall("ObjectivityCommons.DS_CurrentContextVM").withParams(params).execute(context);
 		return result == null ? null : objectivitycommons.proxies.ContextVM.initialize(context, result);
 	}
-	public static java.lang.Long dS_RandomNumber(IContext context, java.lang.Long _min, java.lang.Long _max)
+	public static system.proxies.User dS_CurrentUser(IContext context)
+	{
+		Map<java.lang.String, Object> params = new HashMap<>();
+		IMendixObject result = (IMendixObject)Core.microflowCall("ObjectivityCommons.DS_CurrentUser").withParams(params).execute(context);
+		return result == null ? null : system.proxies.User.initialize(context, result);
+	}
+	public static java.lang.String sUB_CSV_GetCellValue(IContext context, java.lang.String _cSV, java.lang.String _columnHeader, java.lang.Long _rowIndex, java.lang.String _columnSeparator)
+	{
+		Map<java.lang.String, Object> params = new HashMap<>();
+		params.put("CSV", _cSV);
+		params.put("ColumnHeader", _columnHeader);
+		params.put("RowIndex", _rowIndex);
+		params.put("ColumnSeparator", _columnSeparator);
+		return (java.lang.String) Core.microflowCall("ObjectivityCommons.SUB_CSV_GetCellValue").withParams(params).execute(context);
+	}
+	public static java.lang.Long sUB_RandomNumber(IContext context, java.lang.Long _min, java.lang.Long _max)
 	{
 		Map<java.lang.String, Object> params = new HashMap<>();
 		params.put("Min", _min);
 		params.put("Max", _max);
-		return (java.lang.Long) Core.microflowCall("ObjectivityCommons.DS_RandomNumber").withParams(params).execute(context);
+		return (java.lang.Long) Core.microflowCall("ObjectivityCommons.SUB_RandomNumber").withParams(params).execute(context);
 	}
 }

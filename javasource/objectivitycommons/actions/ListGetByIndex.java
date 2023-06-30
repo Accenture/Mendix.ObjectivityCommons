@@ -21,6 +21,9 @@ import com.mendix.systemwideinterfaces.core.IMendixObject;
  * JamCommons: ArrayGet
  * Java: List.get
  * JavaScript: Array[]
+ * 
+ * Returns list item by the given index, zero-based.
+ * In case of non-existing index returns empty.
  */
 public class ListGetByIndex extends CustomJavaAction<IMendixObject>
 {
@@ -38,7 +41,7 @@ public class ListGetByIndex extends CustomJavaAction<IMendixObject>
 	public IMendixObject executeAction() throws Exception
 	{
 		// BEGIN USER CODE
-		return this.Index >= this.List.size()
+		return (this.Index >= this.List.size() || this.Index < 0)
 			? null
 			: this.List.get(this.Index.intValue());
 		// END USER CODE

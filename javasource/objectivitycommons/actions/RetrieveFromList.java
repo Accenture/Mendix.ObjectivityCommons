@@ -21,6 +21,7 @@ import com.mendix.core.objectmanagement.member.MendixObjectReference;
 import com.mendix.core.objectmanagement.member.MendixObjectReferenceSet;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 import com.mendix.systemwideinterfaces.javaactions.parameters.ITemplateParameter;
@@ -57,7 +58,7 @@ public class RetrieveFromList extends CustomJavaAction<java.util.List<IMendixObj
 		IContext ctx = this.getContext();
 		
 		// 0. check if input list is not empty
-		if (this.SourceList.size() == 0) return null;
+		if (this.SourceList.size() == 0) return new ArrayList<IMendixObject>();
 		if (this.Reference == null || this.Reference.isBlank()) throw new com.mendix.systemwideinterfaces.MendixRuntimeException("Reference cannot be empty");
 
 		// 1. check if entity has member defined in reference
@@ -142,8 +143,10 @@ public class RetrieveFromList extends CustomJavaAction<java.util.List<IMendixObj
 			}
 
 			childIdList = childIdList.stream()
+			.filter(Objects::nonNull)
 			.distinct()
 			.collect(Collectors.toList());
+
 			return Core.retrieveIdList(ctx, childIdList);			
 		}
 		// END USER CODE
