@@ -7,20 +7,20 @@ package _test.proxies.microflows;
 import java.util.HashMap;
 import java.util.Map;
 import com.mendix.core.Core;
-import com.mendix.core.CoreException;
-import com.mendix.systemwideinterfaces.MendixRuntimeException;
 import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.systemwideinterfaces.core.IMendixObject;
 
 public class Microflows
 {
+	/**
+	 * @deprecated
+	 * The default constructor of the Microflows class should not be used.
+	 * Use the static microflow invocation methods instead.
+	 */
+	@java.lang.Deprecated(since = "9.12", forRemoval = true)
+	public Microflows() {}
+
 	// These are the microflows for the _Test module
-	public static void aCT_CreateData(IContext context, _test.proxies.TestContextVM _contextVM)
-	{
-		Map<java.lang.String, Object> params = new HashMap<>();
-		params.put("ContextVM", _contextVM == null ? null : _contextVM.getMendixObject());
-		Core.microflowCall("_Test.ACT_CreateData").withParams(params).execute(context);
-	}
 	public static void aCT_Test_CSV_GetCellValue(IContext context, _test.proxies.TestContextVM _testContextVM)
 	{
 		Map<java.lang.String, Object> params = new HashMap<>();
@@ -33,29 +33,11 @@ public class Microflows
 		params.put("ContextVM", _contextVM == null ? null : _contextVM.getMendixObject());
 		Core.microflowCall("_Test.ACT_Test_GetTypeAsString").withParams(params).execute(context);
 	}
-	public static void aCT_Test_ListCreate(IContext context, _test.proxies.TestContextVM _contextVM)
-	{
-		Map<java.lang.String, Object> params = new HashMap<>();
-		params.put("ContextVM", _contextVM == null ? null : _contextVM.getMendixObject());
-		Core.microflowCall("_Test.ACT_Test_ListCreate").withParams(params).execute(context);
-	}
-	public static void aCT_Test_ListCreate_WithContext(IContext context, _test.proxies.TestContextVM _contextVM)
-	{
-		Map<java.lang.String, Object> params = new HashMap<>();
-		params.put("ContextVM", _contextVM == null ? null : _contextVM.getMendixObject());
-		Core.microflowCall("_Test.ACT_Test_ListCreate_WithContext").withParams(params).execute(context);
-	}
 	public static void aCT_Test_ListCreateSimple(IContext context, _test.proxies.TestContextVM _contextVM)
 	{
 		Map<java.lang.String, Object> params = new HashMap<>();
 		params.put("ContextVM", _contextVM == null ? null : _contextVM.getMendixObject());
 		Core.microflowCall("_Test.ACT_Test_ListCreateSimple").withParams(params).execute(context);
-	}
-	public static void aCT_Test_ListGetByIndex(IContext context, _test.proxies.TestContextVM _contextVM)
-	{
-		Map<java.lang.String, Object> params = new HashMap<>();
-		params.put("ContextVM", _contextVM == null ? null : _contextVM.getMendixObject());
-		Core.microflowCall("_Test.ACT_Test_ListGetByIndex").withParams(params).execute(context);
 	}
 	public static void aCT_Test_RandomNumber(IContext context, _test.proxies.TestContextVM _contextVM)
 	{
@@ -98,12 +80,6 @@ public class Microflows
 		Map<java.lang.String, Object> params = new HashMap<>();
 		params.put("ContextVM", _contextVM == null ? null : _contextVM.getMendixObject());
 		Core.microflowCall("_Test.ACT_Test_StringSplitAndJoin").withParams(params).execute(context);
-	}
-	public static void aCT_Test_StringSplitAndJoinByMF(IContext context, _test.proxies.TestContextVM _contextVM)
-	{
-		Map<java.lang.String, Object> params = new HashMap<>();
-		params.put("ContextVM", _contextVM == null ? null : _contextVM.getMendixObject());
-		Core.microflowCall("_Test.ACT_Test_StringSplitAndJoinByMF").withParams(params).execute(context);
 	}
 	public static void aCT_Test_StringSplitAndJoinWithDoubleSepar(IContext context, _test.proxies.TestContextVM _contextVM)
 	{
@@ -151,28 +127,26 @@ public class Microflows
 		Map<java.lang.String, Object> params = new HashMap<>();
 		params.put("ContextVM", _contextVM == null ? null : _contextVM.getMendixObject());
 		java.util.List<IMendixObject> objs = Core.microflowCall("_Test.DS_TestRetrieve_Enhanced").withParams(params).execute(context);
-		java.util.List<_test.proxies.Base> result = null;
-		if (objs != null)
-		{
-			result = new java.util.ArrayList<>();
-			for (IMendixObject obj : objs)
-				result.add(_test.proxies.Base.initialize(context, obj));
+		if (objs == null) {
+			return null;
+		} else {
+			return objs.stream()
+				.map(obj -> _test.proxies.Base.initialize(context, obj))
+				.collect(java.util.stream.Collectors.toList());
 		}
-		return result;
 	}
 	public static java.util.List<_test.proxies.Base> dS_TestRetrieve_Standard(IContext context, _test.proxies.RetrieveContextVM _contextVM)
 	{
 		Map<java.lang.String, Object> params = new HashMap<>();
 		params.put("ContextVM", _contextVM == null ? null : _contextVM.getMendixObject());
 		java.util.List<IMendixObject> objs = Core.microflowCall("_Test.DS_TestRetrieve_Standard").withParams(params).execute(context);
-		java.util.List<_test.proxies.Base> result = null;
-		if (objs != null)
-		{
-			result = new java.util.ArrayList<>();
-			for (IMendixObject obj : objs)
-				result.add(_test.proxies.Base.initialize(context, obj));
+		if (objs == null) {
+			return null;
+		} else {
+			return objs.stream()
+				.map(obj -> _test.proxies.Base.initialize(context, obj))
+				.collect(java.util.stream.Collectors.toList());
 		}
-		return result;
 	}
 	public static void sUB_CreateData_Base(IContext context, _test.proxies.Base _base)
 	{
@@ -187,20 +161,6 @@ public class Microflows
 		params.put("Parent", _parent == null ? null : _parent.getMendixObject());
 		Core.microflowCall("_Test.SUB_CreateData_Child").withParams(params).execute(context);
 	}
-	public static void sUB_CreateData_Parent(IContext context, _test.proxies.Parent _parent, _test.proxies.TestContextVM _contextVM)
-	{
-		Map<java.lang.String, Object> params = new HashMap<>();
-		params.put("Parent", _parent == null ? null : _parent.getMendixObject());
-		params.put("ContextVM", _contextVM == null ? null : _contextVM.getMendixObject());
-		Core.microflowCall("_Test.SUB_CreateData_Parent").withParams(params).execute(context);
-	}
-	public static void sUB_Test_ListCreate(IContext context, _test.proxies.Test _test, objectivitycommons.proxies.ValueVM _index)
-	{
-		Map<java.lang.String, Object> params = new HashMap<>();
-		params.put("Test", _test == null ? null : _test.getMendixObject());
-		params.put("Index", _index == null ? null : _index.getMendixObject());
-		Core.microflowCall("_Test.SUB_Test_ListCreate").withParams(params).execute(context);
-	}
 	public static void sUB_Test_ListCreate_WithContext(IContext context, _test.proxies.Test _test, _test.proxies.TestContextVM _contextVM, objectivitycommons.proxies.ValueVM _index)
 	{
 		Map<java.lang.String, Object> params = new HashMap<>();
@@ -212,21 +172,23 @@ public class Microflows
 	public static void sUB_Test_RetrieveFromList_ShowInfo(IContext context, java.util.List<_test.proxies.Parent> _parentList, java.util.List<_test.proxies.Child> _childrenList, java.lang.String _header, boolean _parentsFirst)
 	{
 		Map<java.lang.String, Object> params = new HashMap<>();
-		java.util.ArrayList<IMendixObject> listparam_parentList = null;
+		java.util.List<IMendixObject> listparam_parentList = null;
 		if (_parentList != null)
 		{
 			listparam_parentList = new java.util.ArrayList<>();
-			for (_test.proxies.Parent obj : _parentList)
+			for (var obj : _parentList) {
 				listparam_parentList.add(obj.getMendixObject());
+			}
 		}
 		params.put("ParentList", listparam_parentList);
 
-		java.util.ArrayList<IMendixObject> listparam_childrenList = null;
+		java.util.List<IMendixObject> listparam_childrenList = null;
 		if (_childrenList != null)
 		{
 			listparam_childrenList = new java.util.ArrayList<>();
-			for (_test.proxies.Child obj : _childrenList)
+			for (var obj : _childrenList) {
 				listparam_childrenList.add(obj.getMendixObject());
+			}
 		}
 		params.put("ChildrenList", listparam_childrenList);
 

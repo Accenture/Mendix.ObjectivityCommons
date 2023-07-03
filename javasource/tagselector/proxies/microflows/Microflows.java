@@ -7,26 +7,31 @@ package tagselector.proxies.microflows;
 import java.util.HashMap;
 import java.util.Map;
 import com.mendix.core.Core;
-import com.mendix.core.CoreException;
-import com.mendix.systemwideinterfaces.MendixRuntimeException;
 import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.systemwideinterfaces.core.IMendixObject;
 
 public class Microflows
 {
+	/**
+	 * @deprecated
+	 * The default constructor of the Microflows class should not be used.
+	 * Use the static microflow invocation methods instead.
+	 */
+	@java.lang.Deprecated(since = "9.12", forRemoval = true)
+	public Microflows() {}
+
 	// These are the microflows for the TagSelector module
 	public static java.util.List<tagselector.proxies.Tag> dS_GetAllTagSuggestions(IContext context)
 	{
 		Map<java.lang.String, Object> params = new HashMap<>();
 		java.util.List<IMendixObject> objs = Core.microflowCall("TagSelector.DS_GetAllTagSuggestions").withParams(params).execute(context);
-		java.util.List<tagselector.proxies.Tag> result = null;
-		if (objs != null)
-		{
-			result = new java.util.ArrayList<>();
-			for (IMendixObject obj : objs)
-				result.add(tagselector.proxies.Tag.initialize(context, obj));
+		if (objs == null) {
+			return null;
+		} else {
+			return objs.stream()
+				.map(obj -> tagselector.proxies.Tag.initialize(context, obj))
+				.collect(java.util.stream.Collectors.toList());
 		}
-		return result;
 	}
 	public static tagselector.proxies.TagVM dS_NewTagVM(IContext context)
 	{
@@ -39,14 +44,13 @@ public class Microflows
 		Map<java.lang.String, Object> params = new HashMap<>();
 		params.put("Taggable", _taggable == null ? null : _taggable.getMendixObject());
 		java.util.List<IMendixObject> objs = Core.microflowCall("TagSelector.OCH_GetCurrentTags").withParams(params).execute(context);
-		java.util.List<tagselector.proxies.Tag> result = null;
-		if (objs != null)
-		{
-			result = new java.util.ArrayList<>();
-			for (IMendixObject obj : objs)
-				result.add(tagselector.proxies.Tag.initialize(context, obj));
+		if (objs == null) {
+			return null;
+		} else {
+			return objs.stream()
+				.map(obj -> tagselector.proxies.Tag.initialize(context, obj))
+				.collect(java.util.stream.Collectors.toList());
 		}
-		return result;
 	}
 	public static void oCH_RemoveAllTags(IContext context, tagselector.proxies.Taggable _taggable)
 	{

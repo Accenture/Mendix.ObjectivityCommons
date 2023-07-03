@@ -22,7 +22,7 @@ public class Child extends _test.proxies.Base
 		Child_Parent("_Test.Child_Parent"),
 		Taggable_Tag("TagSelector.Taggable_Tag");
 
-		private java.lang.String metaName;
+		private final java.lang.String metaName;
 
 		MemberNames(java.lang.String s)
 		{
@@ -38,14 +38,15 @@ public class Child extends _test.proxies.Base
 
 	public Child(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		this(context, com.mendix.core.Core.instantiate(context, "_Test.Child"));
+		this(context, com.mendix.core.Core.instantiate(context, entityName));
 	}
 
 	protected Child(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject childMendixObject)
 	{
 		super(context, childMendixObject);
-		if (!com.mendix.core.Core.isSubClassOf("_Test.Child", childMendixObject.getType()))
-			throw new java.lang.IllegalArgumentException("The given object is not a _Test.Child");
+		if (!com.mendix.core.Core.isSubClassOf(entityName, childMendixObject.getType())) {
+			throw new java.lang.IllegalArgumentException(String.format("The given object is not a %s", entityName));
+		}	
 	}
 
 	/**
@@ -60,6 +61,9 @@ public class Child extends _test.proxies.Base
 	/**
 	 * Initialize a proxy using context (recommended). This context will be used for security checking when the get- and set-methods without context parameters are called.
 	 * The get- and set-methods with context parameter should be used when for instance sudo access is necessary (IContext.createSudoClone() can be used to obtain sudo access).
+	 * @param context The context to be used
+	 * @param mendixObject The Mendix object for the new instance
+	 * @return a new instance of this proxy class
 	 */
 	public static _test.proxies.Child initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject mendixObject)
 	{
@@ -74,13 +78,15 @@ public class Child extends _test.proxies.Base
 
 	public static java.util.List<_test.proxies.Child> load(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String xpathConstraint) throws com.mendix.core.CoreException
 	{
-		java.util.List<_test.proxies.Child> result = new java.util.ArrayList<_test.proxies.Child>();
-		for (com.mendix.systemwideinterfaces.core.IMendixObject obj : com.mendix.core.Core.retrieveXPathQuery(context, "//_Test.Child" + xpathConstraint))
-			result.add(_test.proxies.Child.initialize(context, obj));
-		return result;
+		return com.mendix.core.Core.createXPathQuery(String.format("//%1$s%2$s", entityName, xpathConstraint))
+			.execute(context)
+			.stream()
+			.map(obj -> _test.proxies.Child.initialize(context, obj))
+			.collect(java.util.stream.Collectors.toList());
 	}
 
 	/**
+	 * @throws com.mendix.core.CoreException
 	 * @return value of Child_Parent
 	 */
 	public final _test.proxies.Parent getChild_Parent() throws com.mendix.core.CoreException
@@ -91,13 +97,15 @@ public class Child extends _test.proxies.Base
 	/**
 	 * @param context
 	 * @return value of Child_Parent
+	 * @throws com.mendix.core.CoreException
 	 */
 	public final _test.proxies.Parent getChild_Parent(com.mendix.systemwideinterfaces.core.IContext context) throws com.mendix.core.CoreException
 	{
 		_test.proxies.Parent result = null;
 		com.mendix.systemwideinterfaces.core.IMendixIdentifier identifier = getMendixObject().getValue(context, MemberNames.Child_Parent.toString());
-		if (identifier != null)
+		if (identifier != null) {
 			result = _test.proxies.Parent.load(context, identifier);
+		}
 		return result;
 	}
 
@@ -117,18 +125,19 @@ public class Child extends _test.proxies.Base
 	 */
 	public final void setChild_Parent(com.mendix.systemwideinterfaces.core.IContext context, _test.proxies.Parent child_parent)
 	{
-		if (child_parent == null)
+		if (child_parent == null) {
 			getMendixObject().setValue(context, MemberNames.Child_Parent.toString(), null);
-		else
+		} else {
 			getMendixObject().setValue(context, MemberNames.Child_Parent.toString(), child_parent.getMendixObject().getId());
+		}
 	}
 
 	@java.lang.Override
 	public boolean equals(Object obj)
 	{
-		if (obj == this)
+		if (obj == this) {
 			return true;
-
+		}
 		if (obj != null && getClass().equals(obj.getClass()))
 		{
 			final _test.proxies.Child that = (_test.proxies.Child) obj;
@@ -148,7 +157,7 @@ public class Child extends _test.proxies.Base
 	 */
 	public static java.lang.String getType()
 	{
-		return "_Test.Child";
+		return entityName;
 	}
 
 	/**

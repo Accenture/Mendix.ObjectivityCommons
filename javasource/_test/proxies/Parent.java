@@ -21,7 +21,7 @@ public class Parent extends _test.proxies.Base
 		Category("Category"),
 		Taggable_Tag("TagSelector.Taggable_Tag");
 
-		private java.lang.String metaName;
+		private final java.lang.String metaName;
 
 		MemberNames(java.lang.String s)
 		{
@@ -37,14 +37,15 @@ public class Parent extends _test.proxies.Base
 
 	public Parent(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		this(context, com.mendix.core.Core.instantiate(context, "_Test.Parent"));
+		this(context, com.mendix.core.Core.instantiate(context, entityName));
 	}
 
 	protected Parent(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject parentMendixObject)
 	{
 		super(context, parentMendixObject);
-		if (!com.mendix.core.Core.isSubClassOf("_Test.Parent", parentMendixObject.getType()))
-			throw new java.lang.IllegalArgumentException("The given object is not a _Test.Parent");
+		if (!com.mendix.core.Core.isSubClassOf(entityName, parentMendixObject.getType())) {
+			throw new java.lang.IllegalArgumentException(String.format("The given object is not a %s", entityName));
+		}	
 	}
 
 	/**
@@ -59,6 +60,9 @@ public class Parent extends _test.proxies.Base
 	/**
 	 * Initialize a proxy using context (recommended). This context will be used for security checking when the get- and set-methods without context parameters are called.
 	 * The get- and set-methods with context parameter should be used when for instance sudo access is necessary (IContext.createSudoClone() can be used to obtain sudo access).
+	 * @param context The context to be used
+	 * @param mendixObject The Mendix object for the new instance
+	 * @return a new instance of this proxy class
 	 */
 	public static _test.proxies.Parent initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject mendixObject)
 	{
@@ -73,18 +77,19 @@ public class Parent extends _test.proxies.Base
 
 	public static java.util.List<_test.proxies.Parent> load(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String xpathConstraint) throws com.mendix.core.CoreException
 	{
-		java.util.List<_test.proxies.Parent> result = new java.util.ArrayList<_test.proxies.Parent>();
-		for (com.mendix.systemwideinterfaces.core.IMendixObject obj : com.mendix.core.Core.retrieveXPathQuery(context, "//_Test.Parent" + xpathConstraint))
-			result.add(_test.proxies.Parent.initialize(context, obj));
-		return result;
+		return com.mendix.core.Core.createXPathQuery(String.format("//%1$s%2$s", entityName, xpathConstraint))
+			.execute(context)
+			.stream()
+			.map(obj -> _test.proxies.Parent.initialize(context, obj))
+			.collect(java.util.stream.Collectors.toList());
 	}
 
 	@java.lang.Override
 	public boolean equals(Object obj)
 	{
-		if (obj == this)
+		if (obj == this) {
 			return true;
-
+		}
 		if (obj != null && getClass().equals(obj.getClass()))
 		{
 			final _test.proxies.Parent that = (_test.proxies.Parent) obj;
@@ -104,7 +109,7 @@ public class Parent extends _test.proxies.Base
 	 */
 	public static java.lang.String getType()
 	{
-		return "_Test.Parent";
+		return entityName;
 	}
 
 	/**

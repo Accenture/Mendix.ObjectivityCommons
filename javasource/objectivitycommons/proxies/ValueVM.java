@@ -23,7 +23,7 @@ public class ValueVM
 		String("String"),
 		Integer("Integer");
 
-		private java.lang.String metaName;
+		private final java.lang.String metaName;
 
 		MemberNames(java.lang.String s)
 		{
@@ -39,15 +39,17 @@ public class ValueVM
 
 	public ValueVM(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		this(context, com.mendix.core.Core.instantiate(context, "ObjectivityCommons.ValueVM"));
+		this(context, com.mendix.core.Core.instantiate(context, entityName));
 	}
 
 	protected ValueVM(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject valueVMMendixObject)
 	{
-		if (valueVMMendixObject == null)
+		if (valueVMMendixObject == null) {
 			throw new java.lang.IllegalArgumentException("The given object cannot be null.");
-		if (!com.mendix.core.Core.isSubClassOf("ObjectivityCommons.ValueVM", valueVMMendixObject.getType()))
-			throw new java.lang.IllegalArgumentException("The given object is not a ObjectivityCommons.ValueVM");
+		}
+		if (!com.mendix.core.Core.isSubClassOf(entityName, valueVMMendixObject.getType())) {
+			throw new java.lang.IllegalArgumentException(String.format("The given object is not a %s", entityName));
+		}	
 
 		this.valueVMMendixObject = valueVMMendixObject;
 		this.context = context;
@@ -65,6 +67,9 @@ public class ValueVM
 	/**
 	 * Initialize a proxy using context (recommended). This context will be used for security checking when the get- and set-methods without context parameters are called.
 	 * The get- and set-methods with context parameter should be used when for instance sudo access is necessary (IContext.createSudoClone() can be used to obtain sudo access).
+	 * @param context The context to be used
+	 * @param mendixObject The Mendix object for the new instance
+	 * @return a new instance of this proxy class
 	 */
 	public static objectivitycommons.proxies.ValueVM initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject mendixObject)
 	{
@@ -79,6 +84,7 @@ public class ValueVM
 
 	/**
 	 * Commit the changes made on this proxy object.
+	 * @throws com.mendix.core.CoreException
 	 */
 	public final void commit() throws com.mendix.core.CoreException
 	{
@@ -87,6 +93,7 @@ public class ValueVM
 
 	/**
 	 * Commit the changes made on this proxy object using the specified context.
+	 * @throws com.mendix.core.CoreException
 	 */
 	public final void commit(com.mendix.systemwideinterfaces.core.IContext context) throws com.mendix.core.CoreException
 	{
@@ -199,9 +206,9 @@ public class ValueVM
 	@java.lang.Override
 	public boolean equals(Object obj)
 	{
-		if (obj == this)
+		if (obj == this) {
 			return true;
-
+		}
 		if (obj != null && getClass().equals(obj.getClass()))
 		{
 			final objectivitycommons.proxies.ValueVM that = (objectivitycommons.proxies.ValueVM) obj;
@@ -221,7 +228,7 @@ public class ValueVM
 	 */
 	public static java.lang.String getType()
 	{
-		return "ObjectivityCommons.ValueVM";
+		return entityName;
 	}
 
 	/**

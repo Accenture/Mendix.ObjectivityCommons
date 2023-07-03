@@ -32,7 +32,7 @@ public class RetrieveContextVM
 		SearchChangedByCurrentUser("SearchChangedByCurrentUser"),
 		RetrieveContextVM_User("_Test.RetrieveContextVM_User");
 
-		private java.lang.String metaName;
+		private final java.lang.String metaName;
 
 		MemberNames(java.lang.String s)
 		{
@@ -48,15 +48,17 @@ public class RetrieveContextVM
 
 	public RetrieveContextVM(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		this(context, com.mendix.core.Core.instantiate(context, "_Test.RetrieveContextVM"));
+		this(context, com.mendix.core.Core.instantiate(context, entityName));
 	}
 
 	protected RetrieveContextVM(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject retrieveContextVMMendixObject)
 	{
-		if (retrieveContextVMMendixObject == null)
+		if (retrieveContextVMMendixObject == null) {
 			throw new java.lang.IllegalArgumentException("The given object cannot be null.");
-		if (!com.mendix.core.Core.isSubClassOf("_Test.RetrieveContextVM", retrieveContextVMMendixObject.getType()))
-			throw new java.lang.IllegalArgumentException("The given object is not a _Test.RetrieveContextVM");
+		}
+		if (!com.mendix.core.Core.isSubClassOf(entityName, retrieveContextVMMendixObject.getType())) {
+			throw new java.lang.IllegalArgumentException(String.format("The given object is not a %s", entityName));
+		}	
 
 		this.retrieveContextVMMendixObject = retrieveContextVMMendixObject;
 		this.context = context;
@@ -74,6 +76,9 @@ public class RetrieveContextVM
 	/**
 	 * Initialize a proxy using context (recommended). This context will be used for security checking when the get- and set-methods without context parameters are called.
 	 * The get- and set-methods with context parameter should be used when for instance sudo access is necessary (IContext.createSudoClone() can be used to obtain sudo access).
+	 * @param context The context to be used
+	 * @param mendixObject The Mendix object for the new instance
+	 * @return a new instance of this proxy class
 	 */
 	public static _test.proxies.RetrieveContextVM initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject mendixObject)
 	{
@@ -88,6 +93,7 @@ public class RetrieveContextVM
 
 	/**
 	 * Commit the changes made on this proxy object.
+	 * @throws com.mendix.core.CoreException
 	 */
 	public final void commit() throws com.mendix.core.CoreException
 	{
@@ -96,6 +102,7 @@ public class RetrieveContextVM
 
 	/**
 	 * Commit the changes made on this proxy object using the specified context.
+	 * @throws com.mendix.core.CoreException
 	 */
 	public final void commit(com.mendix.systemwideinterfaces.core.IContext context) throws com.mendix.core.CoreException
 	{
@@ -205,9 +212,9 @@ public class RetrieveContextVM
 	public final _test.proxies.Sorting getSorting(com.mendix.systemwideinterfaces.core.IContext context)
 	{
 		Object obj = getMendixObject().getValue(context, MemberNames.Sorting.toString());
-		if (obj == null)
+		if (obj == null) {
 			return null;
-
+		}
 		return _test.proxies.Sorting.valueOf((java.lang.String) obj);
 	}
 
@@ -227,10 +234,11 @@ public class RetrieveContextVM
 	 */
 	public final void setSorting(com.mendix.systemwideinterfaces.core.IContext context, _test.proxies.Sorting sorting)
 	{
-		if (sorting != null)
+		if (sorting != null) {
 			getMendixObject().setValue(context, MemberNames.Sorting.toString(), sorting.toString());
-		else
+		} else {
 			getMendixObject().setValue(context, MemberNames.Sorting.toString(), null);
+		}
 	}
 
 	/**
@@ -249,9 +257,9 @@ public class RetrieveContextVM
 	public final objectivitycommons.proxies.SortingDirection getSortingDirection(com.mendix.systemwideinterfaces.core.IContext context)
 	{
 		Object obj = getMendixObject().getValue(context, MemberNames.SortingDirection.toString());
-		if (obj == null)
+		if (obj == null) {
 			return null;
-
+		}
 		return objectivitycommons.proxies.SortingDirection.valueOf((java.lang.String) obj);
 	}
 
@@ -271,10 +279,11 @@ public class RetrieveContextVM
 	 */
 	public final void setSortingDirection(com.mendix.systemwideinterfaces.core.IContext context, objectivitycommons.proxies.SortingDirection sortingdirection)
 	{
-		if (sortingdirection != null)
+		if (sortingdirection != null) {
 			getMendixObject().setValue(context, MemberNames.SortingDirection.toString(), sortingdirection.toString());
-		else
+		} else {
 			getMendixObject().setValue(context, MemberNames.SortingDirection.toString(), null);
+		}
 	}
 
 	/**
@@ -365,9 +374,9 @@ public class RetrieveContextVM
 	public final _test.proxies.Category getSearchCategory(com.mendix.systemwideinterfaces.core.IContext context)
 	{
 		Object obj = getMendixObject().getValue(context, MemberNames.SearchCategory.toString());
-		if (obj == null)
+		if (obj == null) {
 			return null;
-
+		}
 		return _test.proxies.Category.valueOf((java.lang.String) obj);
 	}
 
@@ -387,10 +396,11 @@ public class RetrieveContextVM
 	 */
 	public final void setSearchCategory(com.mendix.systemwideinterfaces.core.IContext context, _test.proxies.Category searchcategory)
 	{
-		if (searchcategory != null)
+		if (searchcategory != null) {
 			getMendixObject().setValue(context, MemberNames.SearchCategory.toString(), searchcategory.toString());
-		else
+		} else {
 			getMendixObject().setValue(context, MemberNames.SearchCategory.toString(), null);
+		}
 	}
 
 	/**
@@ -502,6 +512,7 @@ public class RetrieveContextVM
 	}
 
 	/**
+	 * @throws com.mendix.core.CoreException
 	 * @return value of RetrieveContextVM_User
 	 */
 	public final system.proxies.User getRetrieveContextVM_User() throws com.mendix.core.CoreException
@@ -512,13 +523,15 @@ public class RetrieveContextVM
 	/**
 	 * @param context
 	 * @return value of RetrieveContextVM_User
+	 * @throws com.mendix.core.CoreException
 	 */
 	public final system.proxies.User getRetrieveContextVM_User(com.mendix.systemwideinterfaces.core.IContext context) throws com.mendix.core.CoreException
 	{
 		system.proxies.User result = null;
 		com.mendix.systemwideinterfaces.core.IMendixIdentifier identifier = getMendixObject().getValue(context, MemberNames.RetrieveContextVM_User.toString());
-		if (identifier != null)
+		if (identifier != null) {
 			result = system.proxies.User.load(context, identifier);
+		}
 		return result;
 	}
 
@@ -538,10 +551,11 @@ public class RetrieveContextVM
 	 */
 	public final void setRetrieveContextVM_User(com.mendix.systemwideinterfaces.core.IContext context, system.proxies.User retrievecontextvm_user)
 	{
-		if (retrievecontextvm_user == null)
+		if (retrievecontextvm_user == null) {
 			getMendixObject().setValue(context, MemberNames.RetrieveContextVM_User.toString(), null);
-		else
+		} else {
 			getMendixObject().setValue(context, MemberNames.RetrieveContextVM_User.toString(), retrievecontextvm_user.getMendixObject().getId());
+		}
 	}
 
 	/**
@@ -563,9 +577,9 @@ public class RetrieveContextVM
 	@java.lang.Override
 	public boolean equals(Object obj)
 	{
-		if (obj == this)
+		if (obj == this) {
 			return true;
-
+		}
 		if (obj != null && getClass().equals(obj.getClass()))
 		{
 			final _test.proxies.RetrieveContextVM that = (_test.proxies.RetrieveContextVM) obj;
@@ -585,7 +599,7 @@ public class RetrieveContextVM
 	 */
 	public static java.lang.String getType()
 	{
-		return "_Test.RetrieveContextVM";
+		return entityName;
 	}
 
 	/**

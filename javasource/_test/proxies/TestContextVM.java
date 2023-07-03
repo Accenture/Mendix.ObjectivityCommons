@@ -33,7 +33,7 @@ public class TestContextVM
 		Csv_RowIndex("Csv_RowIndex"),
 		TestContextVM_User("_Test.TestContextVM_User");
 
-		private java.lang.String metaName;
+		private final java.lang.String metaName;
 
 		MemberNames(java.lang.String s)
 		{
@@ -49,15 +49,17 @@ public class TestContextVM
 
 	public TestContextVM(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		this(context, com.mendix.core.Core.instantiate(context, "_Test.TestContextVM"));
+		this(context, com.mendix.core.Core.instantiate(context, entityName));
 	}
 
 	protected TestContextVM(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject testContextVMMendixObject)
 	{
-		if (testContextVMMendixObject == null)
+		if (testContextVMMendixObject == null) {
 			throw new java.lang.IllegalArgumentException("The given object cannot be null.");
-		if (!com.mendix.core.Core.isSubClassOf("_Test.TestContextVM", testContextVMMendixObject.getType()))
-			throw new java.lang.IllegalArgumentException("The given object is not a _Test.TestContextVM");
+		}
+		if (!com.mendix.core.Core.isSubClassOf(entityName, testContextVMMendixObject.getType())) {
+			throw new java.lang.IllegalArgumentException(String.format("The given object is not a %s", entityName));
+		}	
 
 		this.testContextVMMendixObject = testContextVMMendixObject;
 		this.context = context;
@@ -75,6 +77,9 @@ public class TestContextVM
 	/**
 	 * Initialize a proxy using context (recommended). This context will be used for security checking when the get- and set-methods without context parameters are called.
 	 * The get- and set-methods with context parameter should be used when for instance sudo access is necessary (IContext.createSudoClone() can be used to obtain sudo access).
+	 * @param context The context to be used
+	 * @param mendixObject The Mendix object for the new instance
+	 * @return a new instance of this proxy class
 	 */
 	public static _test.proxies.TestContextVM initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject mendixObject)
 	{
@@ -89,6 +94,7 @@ public class TestContextVM
 
 	/**
 	 * Commit the changes made on this proxy object.
+	 * @throws com.mendix.core.CoreException
 	 */
 	public final void commit() throws com.mendix.core.CoreException
 	{
@@ -97,6 +103,7 @@ public class TestContextVM
 
 	/**
 	 * Commit the changes made on this proxy object using the specified context.
+	 * @throws com.mendix.core.CoreException
 	 */
 	public final void commit(com.mendix.systemwideinterfaces.core.IContext context) throws com.mendix.core.CoreException
 	{
@@ -515,6 +522,7 @@ public class TestContextVM
 	}
 
 	/**
+	 * @throws com.mendix.core.CoreException
 	 * @return value of TestContextVM_User
 	 */
 	public final system.proxies.User getTestContextVM_User() throws com.mendix.core.CoreException
@@ -525,13 +533,15 @@ public class TestContextVM
 	/**
 	 * @param context
 	 * @return value of TestContextVM_User
+	 * @throws com.mendix.core.CoreException
 	 */
 	public final system.proxies.User getTestContextVM_User(com.mendix.systemwideinterfaces.core.IContext context) throws com.mendix.core.CoreException
 	{
 		system.proxies.User result = null;
 		com.mendix.systemwideinterfaces.core.IMendixIdentifier identifier = getMendixObject().getValue(context, MemberNames.TestContextVM_User.toString());
-		if (identifier != null)
+		if (identifier != null) {
 			result = system.proxies.User.load(context, identifier);
+		}
 		return result;
 	}
 
@@ -551,10 +561,11 @@ public class TestContextVM
 	 */
 	public final void setTestContextVM_User(com.mendix.systemwideinterfaces.core.IContext context, system.proxies.User testcontextvm_user)
 	{
-		if (testcontextvm_user == null)
+		if (testcontextvm_user == null) {
 			getMendixObject().setValue(context, MemberNames.TestContextVM_User.toString(), null);
-		else
+		} else {
 			getMendixObject().setValue(context, MemberNames.TestContextVM_User.toString(), testcontextvm_user.getMendixObject().getId());
+		}
 	}
 
 	/**
@@ -576,9 +587,9 @@ public class TestContextVM
 	@java.lang.Override
 	public boolean equals(Object obj)
 	{
-		if (obj == this)
+		if (obj == this) {
 			return true;
-
+		}
 		if (obj != null && getClass().equals(obj.getClass()))
 		{
 			final _test.proxies.TestContextVM that = (_test.proxies.TestContextVM) obj;
@@ -598,7 +609,7 @@ public class TestContextVM
 	 */
 	public static java.lang.String getType()
 	{
-		return "_Test.TestContextVM";
+		return entityName;
 	}
 
 	/**

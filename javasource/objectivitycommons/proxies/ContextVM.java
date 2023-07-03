@@ -23,7 +23,7 @@ public class ContextVM
 		Number("Number"),
 		ContextVM_User("ObjectivityCommons.ContextVM_User");
 
-		private java.lang.String metaName;
+		private final java.lang.String metaName;
 
 		MemberNames(java.lang.String s)
 		{
@@ -39,15 +39,17 @@ public class ContextVM
 
 	public ContextVM(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		this(context, com.mendix.core.Core.instantiate(context, "ObjectivityCommons.ContextVM"));
+		this(context, com.mendix.core.Core.instantiate(context, entityName));
 	}
 
 	protected ContextVM(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject contextVMMendixObject)
 	{
-		if (contextVMMendixObject == null)
+		if (contextVMMendixObject == null) {
 			throw new java.lang.IllegalArgumentException("The given object cannot be null.");
-		if (!com.mendix.core.Core.isSubClassOf("ObjectivityCommons.ContextVM", contextVMMendixObject.getType()))
-			throw new java.lang.IllegalArgumentException("The given object is not a ObjectivityCommons.ContextVM");
+		}
+		if (!com.mendix.core.Core.isSubClassOf(entityName, contextVMMendixObject.getType())) {
+			throw new java.lang.IllegalArgumentException(String.format("The given object is not a %s", entityName));
+		}	
 
 		this.contextVMMendixObject = contextVMMendixObject;
 		this.context = context;
@@ -65,6 +67,9 @@ public class ContextVM
 	/**
 	 * Initialize a proxy using context (recommended). This context will be used for security checking when the get- and set-methods without context parameters are called.
 	 * The get- and set-methods with context parameter should be used when for instance sudo access is necessary (IContext.createSudoClone() can be used to obtain sudo access).
+	 * @param context The context to be used
+	 * @param mendixObject The Mendix object for the new instance
+	 * @return a new instance of this proxy class
 	 */
 	public static objectivitycommons.proxies.ContextVM initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject mendixObject)
 	{
@@ -79,6 +84,7 @@ public class ContextVM
 
 	/**
 	 * Commit the changes made on this proxy object.
+	 * @throws com.mendix.core.CoreException
 	 */
 	public final void commit() throws com.mendix.core.CoreException
 	{
@@ -87,6 +93,7 @@ public class ContextVM
 
 	/**
 	 * Commit the changes made on this proxy object using the specified context.
+	 * @throws com.mendix.core.CoreException
 	 */
 	public final void commit(com.mendix.systemwideinterfaces.core.IContext context) throws com.mendix.core.CoreException
 	{
@@ -145,6 +152,7 @@ public class ContextVM
 	}
 
 	/**
+	 * @throws com.mendix.core.CoreException
 	 * @return value of ContextVM_User
 	 */
 	public final system.proxies.User getContextVM_User() throws com.mendix.core.CoreException
@@ -155,13 +163,15 @@ public class ContextVM
 	/**
 	 * @param context
 	 * @return value of ContextVM_User
+	 * @throws com.mendix.core.CoreException
 	 */
 	public final system.proxies.User getContextVM_User(com.mendix.systemwideinterfaces.core.IContext context) throws com.mendix.core.CoreException
 	{
 		system.proxies.User result = null;
 		com.mendix.systemwideinterfaces.core.IMendixIdentifier identifier = getMendixObject().getValue(context, MemberNames.ContextVM_User.toString());
-		if (identifier != null)
+		if (identifier != null) {
 			result = system.proxies.User.load(context, identifier);
+		}
 		return result;
 	}
 
@@ -181,10 +191,11 @@ public class ContextVM
 	 */
 	public final void setContextVM_User(com.mendix.systemwideinterfaces.core.IContext context, system.proxies.User contextvm_user)
 	{
-		if (contextvm_user == null)
+		if (contextvm_user == null) {
 			getMendixObject().setValue(context, MemberNames.ContextVM_User.toString(), null);
-		else
+		} else {
 			getMendixObject().setValue(context, MemberNames.ContextVM_User.toString(), contextvm_user.getMendixObject().getId());
+		}
 	}
 
 	/**
@@ -206,9 +217,9 @@ public class ContextVM
 	@java.lang.Override
 	public boolean equals(Object obj)
 	{
-		if (obj == this)
+		if (obj == this) {
 			return true;
-
+		}
 		if (obj != null && getClass().equals(obj.getClass()))
 		{
 			final objectivitycommons.proxies.ContextVM that = (objectivitycommons.proxies.ContextVM) obj;
@@ -228,7 +239,7 @@ public class ContextVM
 	 */
 	public static java.lang.String getType()
 	{
-		return "ObjectivityCommons.ContextVM";
+		return entityName;
 	}
 
 	/**

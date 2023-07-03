@@ -140,6 +140,7 @@ public class RetrieveEnhanced extends CustomJavaAction<java.util.List<IMendixObj
 
 	/**
 	 * Returns a string representation of this action
+	 * @return a string representation of this action
 	 */
 	@java.lang.Override
 	public java.lang.String toString()

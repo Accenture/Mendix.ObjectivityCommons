@@ -22,7 +22,7 @@ public class Taggable
 	{
 		Taggable_Tag("TagSelector.Taggable_Tag");
 
-		private java.lang.String metaName;
+		private final java.lang.String metaName;
 
 		MemberNames(java.lang.String s)
 		{
@@ -38,15 +38,17 @@ public class Taggable
 
 	public Taggable(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		this(context, com.mendix.core.Core.instantiate(context, "TagSelector.Taggable"));
+		this(context, com.mendix.core.Core.instantiate(context, entityName));
 	}
 
 	protected Taggable(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject taggableMendixObject)
 	{
-		if (taggableMendixObject == null)
+		if (taggableMendixObject == null) {
 			throw new java.lang.IllegalArgumentException("The given object cannot be null.");
-		if (!com.mendix.core.Core.isSubClassOf("TagSelector.Taggable", taggableMendixObject.getType()))
-			throw new java.lang.IllegalArgumentException("The given object is not a TagSelector.Taggable");
+		}
+		if (!com.mendix.core.Core.isSubClassOf(entityName, taggableMendixObject.getType())) {
+			throw new java.lang.IllegalArgumentException(String.format("The given object is not a %s", entityName));
+		}	
 
 		this.taggableMendixObject = taggableMendixObject;
 		this.context = context;
@@ -64,12 +66,15 @@ public class Taggable
 	/**
 	 * Initialize a proxy using context (recommended). This context will be used for security checking when the get- and set-methods without context parameters are called.
 	 * The get- and set-methods with context parameter should be used when for instance sudo access is necessary (IContext.createSudoClone() can be used to obtain sudo access).
+	 * @param context The context to be used
+	 * @param mendixObject The Mendix object for the new instance
+	 * @return a new instance of this proxy class
 	 */
 	public static tagselector.proxies.Taggable initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject mendixObject)
 	{
-		if (com.mendix.core.Core.isSubClassOf("_Test.Base", mendixObject.getType()))
+		if (com.mendix.core.Core.isSubClassOf("_Test.Base", mendixObject.getType())) {
 			return _test.proxies.Base.initialize(context, mendixObject);
-
+		}
 		return new tagselector.proxies.Taggable(context, mendixObject);
 	}
 
@@ -81,14 +86,16 @@ public class Taggable
 
 	public static java.util.List<? extends tagselector.proxies.Taggable> load(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String xpathConstraint) throws com.mendix.core.CoreException
 	{
-		java.util.List<tagselector.proxies.Taggable> result = new java.util.ArrayList<tagselector.proxies.Taggable>();
-		for (com.mendix.systemwideinterfaces.core.IMendixObject obj : com.mendix.core.Core.retrieveXPathQuery(context, "//TagSelector.Taggable" + xpathConstraint))
-			result.add(tagselector.proxies.Taggable.initialize(context, obj));
-		return result;
+		return com.mendix.core.Core.createXPathQuery(String.format("//%1$s%2$s", entityName, xpathConstraint))
+			.execute(context)
+			.stream()
+			.map(obj -> tagselector.proxies.Taggable.initialize(context, obj))
+			.collect(java.util.stream.Collectors.toList());
 	}
 
 	/**
 	 * Commit the changes made on this proxy object.
+	 * @throws com.mendix.core.CoreException
 	 */
 	public final void commit() throws com.mendix.core.CoreException
 	{
@@ -97,6 +104,7 @@ public class Taggable
 
 	/**
 	 * Commit the changes made on this proxy object using the specified context.
+	 * @throws com.mendix.core.CoreException
 	 */
 	public final void commit(com.mendix.systemwideinterfaces.core.IContext context) throws com.mendix.core.CoreException
 	{
@@ -119,6 +127,7 @@ public class Taggable
 		com.mendix.core.Core.delete(context, getMendixObject());
 	}
 	/**
+	 * @throws com.mendix.core.CoreException
 	 * @return value of Taggable_Tag
 	 */
 	public final java.util.List<tagselector.proxies.Tag> getTaggable_Tag() throws com.mendix.core.CoreException
@@ -129,16 +138,19 @@ public class Taggable
 	/**
 	 * @param context
 	 * @return value of Taggable_Tag
+	 * @throws com.mendix.core.CoreException
 	 */
 	@SuppressWarnings("unchecked")
 	public final java.util.List<tagselector.proxies.Tag> getTaggable_Tag(com.mendix.systemwideinterfaces.core.IContext context) throws com.mendix.core.CoreException
 	{
-		java.util.List<tagselector.proxies.Tag> result = new java.util.ArrayList<tagselector.proxies.Tag>();
+		java.util.List<tagselector.proxies.Tag> result = new java.util.ArrayList<>();
 		Object valueObject = getMendixObject().getValue(context, MemberNames.Taggable_Tag.toString());
-		if (valueObject == null)
+		if (valueObject == null) {
 			return result;
-		for (com.mendix.systemwideinterfaces.core.IMendixObject mendixObject : com.mendix.core.Core.retrieveIdList(context, (java.util.List<com.mendix.systemwideinterfaces.core.IMendixIdentifier>) valueObject))
+		}
+		for (com.mendix.systemwideinterfaces.core.IMendixObject mendixObject : com.mendix.core.Core.retrieveIdList(context, (java.util.List<com.mendix.systemwideinterfaces.core.IMendixIdentifier>) valueObject)) {
 			result.add(tagselector.proxies.Tag.initialize(context, mendixObject));
+		}
 		return result;
 	}
 
@@ -158,9 +170,11 @@ public class Taggable
 	 */
 	public final void setTaggable_Tag(com.mendix.systemwideinterfaces.core.IContext context, java.util.List<tagselector.proxies.Tag> taggable_tag)
 	{
-		java.util.List<com.mendix.systemwideinterfaces.core.IMendixIdentifier> identifiers = new java.util.ArrayList<com.mendix.systemwideinterfaces.core.IMendixIdentifier>();
-		for (tagselector.proxies.Tag proxyObject : taggable_tag)
-			identifiers.add(proxyObject.getMendixObject().getId());
+		var identifiers = taggable_tag
+			.stream()
+			.map(proxyObject -> proxyObject.getMendixObject().getId())
+			.collect(java.util.stream.Collectors.toList());
+		
 		getMendixObject().setValue(context, MemberNames.Taggable_Tag.toString(), identifiers);
 	}
 
@@ -183,9 +197,9 @@ public class Taggable
 	@java.lang.Override
 	public boolean equals(Object obj)
 	{
-		if (obj == this)
+		if (obj == this) {
 			return true;
-
+		}
 		if (obj != null && getClass().equals(obj.getClass()))
 		{
 			final tagselector.proxies.Taggable that = (tagselector.proxies.Taggable) obj;
@@ -205,7 +219,7 @@ public class Taggable
 	 */
 	public static java.lang.String getType()
 	{
-		return "TagSelector.Taggable";
+		return entityName;
 	}
 
 	/**
