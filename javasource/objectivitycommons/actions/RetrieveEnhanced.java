@@ -67,6 +67,8 @@ import com.mendix.systemwideinterfaces.javaactions.parameters.ITemplateParameter
  *   if $ContextVM/SearchCategory = empty then empty
  *   else toString($ContextVM/SearchCategory)
  * 
+ * SINCE VERSION 9.6.2:
+ * NOTICE: If you plan to create Xpath within microflow and pass complete verbatim string, use XpathString param instead. Since all params are required, set Xpath param to NULL if you want to use XpathString.
  */
 public class RetrieveEnhanced extends CustomJavaAction<java.util.List<IMendixObject>>
 {
@@ -74,15 +76,17 @@ public class RetrieveEnhanced extends CustomJavaAction<java.util.List<IMendixObj
 	private java.lang.Long PageNumber;
 	private java.lang.Long PageSize;
 	private com.mendix.systemwideinterfaces.javaactions.parameters.IStringTemplate Xpath;
+	private java.lang.String XpathString;
 	private com.mendix.systemwideinterfaces.javaactions.parameters.IStringTemplate Sorting;
 
-	public RetrieveEnhanced(IContext context, java.lang.String Entity, java.lang.Long PageNumber, java.lang.Long PageSize, com.mendix.systemwideinterfaces.javaactions.parameters.IStringTemplate Xpath, com.mendix.systemwideinterfaces.javaactions.parameters.IStringTemplate Sorting)
+	public RetrieveEnhanced(IContext context, java.lang.String Entity, java.lang.Long PageNumber, java.lang.Long PageSize, com.mendix.systemwideinterfaces.javaactions.parameters.IStringTemplate Xpath, java.lang.String XpathString, com.mendix.systemwideinterfaces.javaactions.parameters.IStringTemplate Sorting)
 	{
 		super(context);
 		this.Entity = Entity;
 		this.PageNumber = PageNumber;
 		this.PageSize = PageSize;
 		this.Xpath = Xpath;
+		this.XpathString = XpathString;
 		this.Sorting = Sorting;
 	}
 
@@ -105,7 +109,9 @@ public class RetrieveEnhanced extends CustomJavaAction<java.util.List<IMendixObj
 
 		// --- xpath
 		List<ITemplateParameter> pars = Xpath.getParameters();
-		String xp = Xpath.replacePlaceholders((placeholder, idx) -> {
+		String xp;
+		if (XpathString == null) {
+		xp = Xpath.replacePlaceholders((placeholder, idx) -> {
 			ITemplateParameter par = pars.get(idx - 1);
 			Object value = par.getValue();
 			if (value == null) return "NULL";
@@ -117,6 +123,9 @@ public class RetrieveEnhanced extends CustomJavaAction<java.util.List<IMendixObj
 				default: return val;
 			}
 		});
+		} else {
+			xp = XpathString;
+		}
 		xp = String.format("//%s %s", Entity, xp);
 
 		// --- pagination

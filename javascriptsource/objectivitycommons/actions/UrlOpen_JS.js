@@ -5,6 +5,7 @@
 // - the code between BEGIN USER CODE and END USER CODE
 // - the code between BEGIN EXTRA CODE and END EXTRA CODE
 // Other code you write will be lost the next time you deploy the project.
+import "mx-global";
 import { Big } from "big.js";
 
 // BEGIN EXTRA CODE
@@ -16,7 +17,7 @@ import { Big } from "big.js";
  * @param {boolean} inNewTab
  * @returns {Promise.<boolean>}
  */
-export async function UrlOpen_JS(url, inNewTab) {
+export async function URLOpen_JS(url, inNewTab) {
 	// BEGIN USER CODE
     if (!url) {
         return Promise.reject(new Error("Input parameter 'Url' is required"));

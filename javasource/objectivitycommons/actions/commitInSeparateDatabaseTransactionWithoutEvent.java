@@ -22,11 +22,11 @@ import com.mendix.systemwideinterfaces.core.IMendixObject;
  * 
  * 
  */
-public class commitInSeparateDatabaseTransactionWithoutEvent extends CustomJavaAction<java.lang.Boolean>
+public class CommitInSeparateDatabaseTransactionWithoutEvent extends CustomJavaAction<java.lang.Boolean>
 {
 	private IMendixObject mxObject;
 
-	public commitInSeparateDatabaseTransactionWithoutEvent(IContext context, IMendixObject mxObject)
+	public CommitInSeparateDatabaseTransactionWithoutEvent(IContext context, IMendixObject mxObject)
 	{
 		super(context);
 		this.mxObject = mxObject;
@@ -51,7 +51,7 @@ public class commitInSeparateDatabaseTransactionWithoutEvent extends CustomJavaA
 	@java.lang.Override
 	public java.lang.String toString()
 	{
-		return "commitInSeparateDatabaseTransactionWithoutEvent";
+		return "CommitInSeparateDatabaseTransactionWithoutEvent";
 	}
 
 	// BEGIN EXTRA CODE

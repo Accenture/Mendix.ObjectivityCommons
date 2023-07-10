@@ -5,6 +5,7 @@
 // - the code between BEGIN USER CODE and END USER CODE
 // - the code between BEGIN EXTRA CODE and END EXTRA CODE
 // Other code you write will be lost the next time you deploy the project.
+import "mx-global";
 import { Big } from "big.js";
 
 // BEGIN EXTRA CODE
@@ -17,7 +18,7 @@ import { Big } from "big.js";
  * Java: String.split
  * JavaScript: String.split
  * 
- * The splitting result is returned as list of ValueVM with String = value and Integer = index.
+ * The splitting result is returned as list of StringValue objects.
  * @param {string} string - Input string to split
  * @param {string} separator - Regex
  * @returns {Promise.<MxObject[]>}

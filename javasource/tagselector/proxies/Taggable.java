@@ -72,9 +72,6 @@ public class Taggable
 	 */
 	public static tagselector.proxies.Taggable initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject mendixObject)
 	{
-		if (com.mendix.core.Core.isSubClassOf("_Test.Base", mendixObject.getType())) {
-			return _test.proxies.Base.initialize(context, mendixObject);
-		}
 		return new tagselector.proxies.Taggable(context, mendixObject);
 	}
 
@@ -84,7 +81,7 @@ public class Taggable
 		return tagselector.proxies.Taggable.initialize(context, mendixObject);
 	}
 
-	public static java.util.List<? extends tagselector.proxies.Taggable> load(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String xpathConstraint) throws com.mendix.core.CoreException
+	public static java.util.List<tagselector.proxies.Taggable> load(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String xpathConstraint) throws com.mendix.core.CoreException
 	{
 		return com.mendix.core.Core.createXPathQuery(String.format("//%1$s%2$s", entityName, xpathConstraint))
 			.execute(context)

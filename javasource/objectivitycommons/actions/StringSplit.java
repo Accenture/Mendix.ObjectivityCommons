@@ -9,7 +9,7 @@
 
 package objectivitycommons.actions;
 
-import objectivitycommons.proxies.ValueVM;
+import objectivitycommons.proxies.StringValue;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -24,7 +24,7 @@ import com.mendix.systemwideinterfaces.core.IMendixObject;
  * Java: String.split
  * JavaScript: String.split
  * 
- * The splitting result is returned as list of ValueVM with String = value and Integer = index.
+ * The splitting result is returned as list of StringValue objects.
  */
 public class StringSplit extends CustomJavaAction<java.util.List<IMendixObject>>
 {
@@ -48,9 +48,9 @@ public class StringSplit extends CustomJavaAction<java.util.List<IMendixObject>>
 		List<IMendixObject> result = new ArrayList<IMendixObject>();
 		int idx = 0;
 		for (String part : str.split(sep)) {
-			ValueVM vm = new ValueVM(ctx);
-			vm.setString(part);
-			vm.setInteger(idx++);
+			StringValue vm = new StringValue(ctx);
+			vm.setValue(part);
+			vm.setIndex(idx++);
 			result.add(vm.getMendixObject());
 		}
 		return result;
