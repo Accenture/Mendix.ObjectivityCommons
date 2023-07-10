@@ -38,25 +38,25 @@ Mendix version: 9.24.3.
 
 ### 1.1 ClientAPI
 
-##### CurrentPageEquals_JS 
+#### CurrentPageEquals_JS 
 
 Checks whether current page name equals provided value.
 
-##### CurrentSession_JS 
+#### CurrentSession_JS 
 
 Retrieves current user session.
 
-##### CurrentUserObject_JS 
+#### CurrentUserObject_JS 
 
 Returns currentUser object cast to User entity without performing server call.
 
-##### HasUserRole_JS 
+#### HasUserRole_JS 
 
 This action checks whether current user has role with provided role name.
 
 ### 1.2 CSV
 
-##### CSV_ReadNextLine_ToEntity
+#### CSV_ReadNextLine_ToEntity
 
 Safer alternative for ReadNextLine from CSV module.
 This one is more safe:
@@ -66,7 +66,7 @@ Reads a next line from a CSV - and returns an entity of the configured type.
 This action should only be invoked from the microflow used by a ImportCSV action.
 If the action returns an empty entity, the end of the file is reached.
 
-##### CSV_ReadNextLine_ToStringList
+#### CSV_ReadNextLine_ToStringList
 
 An alternative for ReadNextLine from CSV module.
 This one is more dynamic:
@@ -76,7 +76,7 @@ Reads a next line from a CSV - and returns a List of StringDTO.
 This action should only be invoked from the microflow used by a ImportCSV action.
 If the action returns an empty list, the end of the file is reached.
 
-##### CSV_WriteNextLine_FromEntity
+#### CSV_WriteNextLine_FromEntity
 
 Safer alternative for WriteNextLine from CSV module.
 This one is more safe:
@@ -86,7 +86,7 @@ Writes all (configured) attribute values from the entity as column values of CSV
 This action should only be invoked from the microflow used by a ExportCSV action.
 All attribute vales will be exported as Strings (using toString()); thus specific parsing should be part of the microflow.
 
-##### CSV_WriteNextLine_FromStringList
+#### CSV_WriteNextLine_FromStringList
 
 An alternative for WriteNextLine from CSV module.
 This one is more dynamic:
@@ -101,87 +101,87 @@ Tools for DataGrid 1.0 widget.
 
 ### 1.4 DOM
 
-##### GetCaretPosition_JS
+#### GetCaretPosition_JS
 
 Gets current caret position in the edited text.
 
-##### SetCaretPosition_JS
+#### SetCaretPosition_JS
 
 Sets current caret position in the edited text.
 
-##### RemoveClassFromElements_JS
+#### RemoveClassFromElements_JS
 
 Removes class from elements with given selector.
 
-##### SetInnerHTML_JS
+#### SetInnerHTML_JS
 
 Sets innerHTML attribute of HTML element.
 
-##### RemoveFocusFromElement_JS
+#### RemoveFocusFromElement_JS
 
 Removes focus from element with given selector
 
-##### SetKeyboardNavigationOnListView_JS
+#### SetKeyboardNavigationOnListView_JS
 
 Provides keyboard navigation events on list view items
 
 ### 1.5 JSON
 
-##### JSON_Array_GetByKey
+#### JSON_Array_GetByKey
 
 Generates a list of KeyValue objects from input JSON array. Each array element is represented as a single chosen attribute (key/value pair) mapped to Mendix object indexed with an order number. 
 
-##### JSON_Array_GetKeyValuePairs
+#### JSON_Array_GetKeyValuePairs
 
 Generates a list of KeyValueContainer objects from input JSON array. Each array element is represented as a single KeyValueContainer object with associated collection of KeyValue objects. Each KeyValue object represents a single attribute (key/value pair) of its parent object. Additionally, the KeyValueContainer objects hold a single attribute ('id' recommended for most use cases) for easier identification. The attribute will be duplicated in the associated KeyValue object.
 
-##### JSON_Object_GetByKey
+#### JSON_Object_GetByKey
 
 Returns a string containing extracted value from provided JSON object.
 
-##### JSON_Object_GetKeyValuePairs
+#### JSON_Object_GetKeyValuePairs
 
 Generates a list of attributes for provided JSON object as a KeyValue list.
 
-##### JsonStringify_JS
+#### JsonStringify_JS
 
 See JavaScript: JSON.stringify
 
-##### JsonStringifyList_JS
+#### JsonStringifyList_JS
 
 See JavaScript: JSON.stringify
 
 ### 1.6 List
 
-##### ListDistinct
+#### ListDistinct
 
 Returns copy of Input list with distinct values (for the given Attribute): duplicates are ignored.
 
-##### ListMap
+#### ListMap
 
 Maps source list into target list using simple get/set logic: get value from SourceAttribute (from source entity) and set it to TargetAttribute (to target entity).
 
-##### ListShuffle
+#### ListShuffle
 
 Expects list of Mendix Objects as a parameter and returns list of same elements with randomized order.
 
-##### ListTake
+#### ListTake
 
 Returns a sublist of a given list. Elements from start index (offset) to the end index (amount + offset) are taken. If offset is not given, then default value is assumed - 0. If the end index exceeds the bounds of the list, then all remaining elements are returned.
 
-##### ListTake_JS
+#### ListTake_JS
 
 JS version of ListTake. Returns a sublist of a given list. Elements from start index (offset) to the end index (amount + offset) are taken. If offset is not given, then default value is assumed - 0. If the end index exceeds the bounds of the list, then all remaining elements are returned.
 
 ### 1.7 Misc
 
-##### Logout
+#### Logout
 
 Logs out current user.
 
 ### 1.8 ORM
 
-##### CloneIgnoreSystemAttributes
+#### CloneIgnoreSystemAttributes
 
 Clones objects fully - all attributes and associations
 
@@ -190,106 +190,106 @@ Clones objects fully - all attributes and associations
 
 System attributes are ignored.
 
-##### CommitInSeparateDatabaseTransactionWithoutEvent
+#### CommitInSeparateDatabaseTransactionWithoutEvent
 
 Copy of Community Commons commitInSeparateDatabaseTransation Java action. 
 
 This action performs commit without events
 
-##### GetAttributeValueAsString
+#### GetAttributeValueAsString
 
 Returns value of the named attribute for the provided object as a string.
 
-##### GetTypeAsString
+#### GetTypeAsString
 
 Enhanced version of CommunityCommons.getTypeAsString: ignoreModuleName param added.
 
 Returns the actual type of an Entity. Useful as alternative way to split upon inheritance, or as input of other functions in this module.
 
-##### RetrieveObjectByGuid
+#### RetrieveObjectByGuid
 
 Retrieve an object of the provided type by GUID.
 
-##### ExportOQLToJSON
+#### ExportOQLToJSON
 
 Similiar to ExecuteOQLStatement, but returns data serialized in JSON format.
 
-##### ExecuteSQLStatement
+#### ExecuteSQLStatement
 
 Allows execution of SQL Select statement in order to return MxObjects.
 
-##### ExecuteSQLStatementReturnCount
+#### ExecuteSQLStatementReturnCount
 
 Executes the SQL statement, which must be an SQL Data Manipulation Language (DML) statement, such as INSERT, UPDATE or DELETE; or an SQL statement that returns nothing, such as a DDL statement.
 
 Returns either the row count for SQL Data Manipulation Language (DML) statements or 0 for SQL statements that return nothing.
 
-##### RetrieveEnhanced
+#### RetrieveEnhanced
 
 Similar to normal Retrieve (from DB) activity, enhanced with:
  - Simplified Pagination
  - Dynamic Sorting.
 
-##### RetrieveEnhancedWithTotalRows
+#### RetrieveEnhancedWithTotalRows
 
 RetrieveEnhanced which returns total number of returned rows.
 
-##### RetrieveFromList
+#### RetrieveFromList
 
 Similiar to RetrieveEnhanced. Returns objects that are associated to objects from the source list.
 
-##### RetrieveLong
+#### RetrieveLong
 
 Similiar to RetrieveEnhanced. Returns NumericValue objects for each selected object by XPath. Useful for Id retrieval.
 
 ### 1.9 String
 
-##### StringBetween
+#### StringBetween
 
 Returns substring between OpeningTag and ClosingTag - or empty if >= 1 of tags is missing.
 
-##### StringCount_JS
+#### StringCount_JS
 
 Counts number of occurences of Separator in the given input String.
 
-##### StringJoin
+#### StringJoin
 
 See:
 JamCommons: StringJoin
 Java: String.join
 JavaScript: Array.join
 
-##### StringJoin_JS
+#### StringJoin_JS
 
 See:
 JamCommons: StringJoin
 Java: String.join
 JavaScript: Array.join
 
-##### StringJoinByNF_JS
+#### StringJoinByNF_JS
 
 Same as StringJoin_JS, but getting the string value to join from each entity is different: calls the given NANOFLOW instead of an ATTRIBUTE. The nanoflow should accept the entity as param, and return string as result.
 
-##### StringJoinByTemplate
+#### StringJoinByTemplate
 
 Having example input List: [{Key:"id", Value:"1"}, {Key:"name", Value:"name1"}]
 and Separator = ", "
 and Template = "{Key}: {Value}"
 result is: "id: 1, name: name1"
 
-##### StringReplaceRegex
+#### StringReplaceRegex
 
 Full implementation of Java String.replaceAll()
 
 Stronger then Mendix replaceAll/First() string functions: the replacement patterns are supported.
 
-##### StringReplaceRegex_JS
+#### StringReplaceRegex_JS
 
 Full implementation of JS String.replace()
 
 Stronger then Mendix replaceAll/First() string functions: the replacement patterns are supported.
 
-##### StringSplit
+#### StringSplit
 
 See:
 CommunityCommons: StringSplit
@@ -299,7 +299,7 @@ JavaScript: String.split
 
 The splitting result is returned as list of StringValue objects.
 
-##### StringSplit_JS
+#### StringSplit_JS
 
 See:
 CommunityCommons: StringSplit
@@ -311,13 +311,13 @@ The splitting result is returned as list of StringValue objects.
 
 ### 1.10 URL
 
-##### URLEncode
+#### URLEncode
 
 Mendix wrapper for Java for URLEncoder.encode method. Encodes in UTF-8 format.
 
 See: https://docs.oracle.com/javase/8/docs/api/java/net/URLEncoder.html
 
-##### URLOpen_JS
+#### URLOpen_JS
 
 Opens the provided URL in the web browser.
 
