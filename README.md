@@ -1,12 +1,12 @@
 # ObjectivityCommons
 A toolset of useful Mendix stuff commonly shared between multiple projects like Java Actions and JavaScript Actions.
 
-To use, export desired module from this project and export to your own.
+To use, export desired module from this project and import to your own.
 
 Mendix version: 9.24.3.
 
 ## Table of Contents
-[1. ObjectivityCommons](#1-ObjectivityCommons)
+[1. ObjectivityCommons](#1-objectivitycommons)
 
 &nbsp;&nbsp;[1.1 ClientAPI](#11-clientapi)
 
@@ -28,11 +28,11 @@ Mendix version: 9.24.3.
 
 &nbsp;&nbsp;[1.10 URL](#110-url)
 
-[2. TagSelector](#2-TagSelector)
+[2. TagSelector](#2-tagselector)
 
-[3. SignInMicroflow](#3-SignInMicroflow)
+[3. SignInMicroflow](#3-signinmicroflow)
 
-[4. DataMigration](#4-DataMigration)
+[4. DataMigration](#4-datamigration)
 
 ## 1. ObjectivityCommons
 
