@@ -3,6 +3,11 @@ A toolset of useful Mendix stuff commonly shared between multiple projects like 
 
 To use, export desired module from this project and export to your own.
 
+Depends on modules:
+    - CommunityCommons
+    - OQL
+    - CSV
+
 Mendix version: 9.24.3.
 
 ## Table of Contents
